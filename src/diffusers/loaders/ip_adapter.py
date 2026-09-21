@@ -166,3 +166,4 @@ class IPAdapterMixin:
                 ),
             ):
                 attn_processor.scale = scale
+
