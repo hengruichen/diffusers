@@ -45,7 +45,7 @@ class IPAdapterMixin:
     """Mixin for handling IP Adapters."""
 
     @validate_hf_hub_args
-    def load_ip_adapter(
+    def load_ip_adapter_lora(
         self,
         pretrained_model_name_or_path_or_dict: Union[str, Dict[str, torch.Tensor]],
         weight_name: str,
@@ -152,7 +152,7 @@ class IPAdapterMixin:
             self.feature_extractor = CLIPImageProcessor()
 
         # load ip-adapter into unet
-        self.unet._load_ip_adapter_weights(state_dict)
+        self.unet._load_ip_adapter_lora_weights(state_dict)
 
     def set_ip_adapter_scale(self, scale):
         for attn_processor in self.unet.attn_processors.values():
@@ -166,4 +166,3 @@ class IPAdapterMixin:
                 ),
             ):
                 attn_processor.scale = scale
-
