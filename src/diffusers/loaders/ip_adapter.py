@@ -134,7 +134,7 @@ class IPAdapterMixin:
         if keys != ["image_proj", "ip_adapter"]:
             raise ValueError("Required keys are (`image_proj` and `ip_adapter`) missing from the state dict.")
 
-        # load CLIP image encoer here if it has not been registered to the pipeline yet
+        # load CLIP image encoder here if it has not been registered to the pipeline yet
         if hasattr(self, "image_encoder") and getattr(self, "image_encoder", None) is None:
             if not isinstance(pretrained_model_name_or_path_or_dict, dict):
                 try:
@@ -166,3 +166,4 @@ class IPAdapterMixin:
                 ),
             ):
                 attn_processor.scale = scale
+
